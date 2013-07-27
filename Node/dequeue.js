@@ -71,4 +71,18 @@ Dequeue.prototype.to_array = function() {
   return out;
 }
 
+/** Simple Peak-Finding Algorithm **/
+Dequeue.prototype.find_peaks = function() {
+  var data = this.to_array();
+  var high_peaks = []
+  var low_peaks = []
+  for (int i = 1; i < data.length() - 1; i++) {
+    if(data[i-1] < data[i] && data[i] > data[i+1]) {
+      high_peaks.push(i);
+    } else if(data[i-1] > data[i] && data[i] < data[i+1]) {
+      low_peaks.push(i);
+    }
+  }
+}
+
 module.exports = Dequeue;
