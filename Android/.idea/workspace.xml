@@ -20,17 +20,20 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="YOLO" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" name="Default" comment="" />
     <ignored path="Android.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374957001613" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374959327001" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374965044082" ignored="false" />
     <file path="/MainActivity.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958432173" ignored="false" />
     <file path="/Dummy.txt" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958178290" ignored="false" />
-    <file path="/AccelerometerService.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958384141" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/com/yolo/octo/hipster/Manifest.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958646155" ignored="false" />
+    <file path="/AccelerometerService.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374964082634" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/yolo/octo/hipster/Manifest.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374964418797" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374964275448" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/com/yolo/octo/hipster/BuildConfig.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374964421859" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,10 +94,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="49" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
+            <state line="7" column="63" selection-start="410" selection-end="410" vertical-scroll-proportion="0.1826087">
               <folding />
             </state>
           </provider>
@@ -111,13 +114,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccelerometerService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AccelerometerService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="12" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.740099">
+            <state line="49" column="34" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IOConnection.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/libs/socketio.jar!/io/socket/IOConnection.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="128" column="0" selection-start="5502" selection-end="5502" vertical-scroll-proportion="-14.36">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,9 +156,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/yolo/octo/hipster/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -250,6 +262,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -257,14 +283,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="recentsLimit" value="5" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/gson-2.2.4.jar!/" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
-    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.Android">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -426,7 +456,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1253" height="956" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="-1" side_tool="false" content_ui="tabs" />
@@ -445,8 +475,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16404308" sideWeight="0.5861244" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27870813" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16404308" sideWeight="0.72129184" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27870813" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -529,6 +559,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/socketio.jar!/io/socket/IOConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="0" selection-start="5502" selection-end="5502" vertical-scroll-proportion="-14.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0">
@@ -538,22 +575,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="49" selection-start="759" selection-end="759" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="12" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.740099">
+        <state line="49" column="34" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="63" selection-start="410" selection-end="410" vertical-scroll-proportion="0.1826087">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>gson-2.2.4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 
