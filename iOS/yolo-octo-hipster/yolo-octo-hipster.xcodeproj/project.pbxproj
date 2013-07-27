@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B994038B17A4643C002A08F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B994038A17A4643C002A08F1 /* UIKit.framework */; };
+		B994038D17A4643C002A08F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B994038C17A4643C002A08F1 /* Foundation.framework */; };
+		B994038F17A4643C002A08F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B994038E17A4643C002A08F1 /* CoreGraphics.framework */; };
+		B994039517A4643D002A08F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B994039317A4643D002A08F1 /* InfoPlist.strings */; };
+		B994039717A4643D002A08F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B994039617A4643D002A08F1 /* main.m */; };
+		B994039B17A4643D002A08F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B994039A17A4643D002A08F1 /* AppDelegate.m */; };
+		B994039D17A4643D002A08F1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B994039C17A4643D002A08F1 /* Default.png */; };
+		B994039F17A4643D002A08F1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B994039E17A4643D002A08F1 /* Default@2x.png */; };
+		B99403A117A4643D002A08F1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B99403A017A4643D002A08F1 /* Default-568h@2x.png */; };
+		B99403A417A4643D002A08F1 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99403A217A4643D002A08F1 /* MainStoryboard_iPhone.storyboard */; };
+		B99403A717A4643D002A08F1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99403A517A4643D002A08F1 /* MainStoryboard_iPad.storyboard */; };
+		B99403AA17A4643D002A08F1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B99403A917A4643D002A08F1 /* ViewController.m */; };
+		B99403B217A4643D002A08F1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99403B117A4643D002A08F1 /* SenTestingKit.framework */; };
+		B99403B317A4643D002A08F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B994038A17A4643C002A08F1 /* UIKit.framework */; };
+		B99403B417A4643D002A08F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B994038C17A4643C002A08F1 /* Foundation.framework */; };
+		B99403BC17A4643D002A08F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B99403BA17A4643D002A08F1 /* InfoPlist.strings */; };
+		B99403BF17A4643D002A08F1 /* yolo_octo_hipsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B99403BE17A4643D002A08F1 /* yolo_octo_hipsterTests.m */; };
+		B99403C917A4675E002A08F1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99403C817A4675E002A08F1 /* CoreMotion.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B99403B517A4643D002A08F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B994037F17A4643C002A08F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B994038617A4643C002A08F1;
+			remoteInfo = "yolo-octo-hipster";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B994038717A4643C002A08F1 /* yolo-octo-hipster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "yolo-octo-hipster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B994038A17A4643C002A08F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B994038C17A4643C002A08F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B994038E17A4643C002A08F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B994039217A4643D002A08F1 /* yolo-octo-hipster-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yolo-octo-hipster-Info.plist"; sourceTree = "<group>"; };
+		B994039417A4643D002A08F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B994039617A4643D002A08F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B994039817A4643D002A08F1 /* yolo-octo-hipster-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yolo-octo-hipster-Prefix.pch"; sourceTree = "<group>"; };
+		B994039917A4643D002A08F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B994039A17A4643D002A08F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B994039C17A4643D002A08F1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B994039E17A4643D002A08F1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B99403A017A4643D002A08F1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B99403A317A4643D002A08F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		B99403A617A4643D002A08F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		B99403A817A4643D002A08F1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B99403A917A4643D002A08F1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B99403B017A4643D002A08F1 /* yolo-octo-hipsterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "yolo-octo-hipsterTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99403B117A4643D002A08F1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B99403B917A4643D002A08F1 /* yolo-octo-hipsterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yolo-octo-hipsterTests-Info.plist"; sourceTree = "<group>"; };
+		B99403BB17A4643D002A08F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B99403BD17A4643D002A08F1 /* yolo_octo_hipsterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yolo_octo_hipsterTests.h; sourceTree = "<group>"; };
+		B99403BE17A4643D002A08F1 /* yolo_octo_hipsterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = yolo_octo_hipsterTests.m; sourceTree = "<group>"; };
+		B99403C817A4675E002A08F1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B994038417A4643C002A08F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B99403C917A4675E002A08F1 /* CoreMotion.framework in Frameworks */,
+				B994038B17A4643C002A08F1 /* UIKit.framework in Frameworks */,
+				B994038D17A4643C002A08F1 /* Foundation.framework in Frameworks */,
+				B994038F17A4643C002A08F1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99403AC17A4643D002A08F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B99403B217A4643D002A08F1 /* SenTestingKit.framework in Frameworks */,
+				B99403B317A4643D002A08F1 /* UIKit.framework in Frameworks */,
+				B99403B417A4643D002A08F1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B994037E17A4643C002A08F1 = {
+			isa = PBXGroup;
+			children = (
+				B99403C817A4675E002A08F1 /* CoreMotion.framework */,
+				B994039017A4643D002A08F1 /* yolo-octo-hipster */,
+				B99403B717A4643D002A08F1 /* yolo-octo-hipsterTests */,
+				B994038917A4643C002A08F1 /* Frameworks */,
+				B994038817A4643C002A08F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B994038817A4643C002A08F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B994038717A4643C002A08F1 /* yolo-octo-hipster.app */,
+				B99403B017A4643D002A08F1 /* yolo-octo-hipsterTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B994038917A4643C002A08F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B994038A17A4643C002A08F1 /* UIKit.framework */,
+				B994038C17A4643C002A08F1 /* Foundation.framework */,
+				B994038E17A4643C002A08F1 /* CoreGraphics.framework */,
+				B99403B117A4643D002A08F1 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B994039017A4643D002A08F1 /* yolo-octo-hipster */ = {
+			isa = PBXGroup;
+			children = (
+				B994039917A4643D002A08F1 /* AppDelegate.h */,
+				B994039A17A4643D002A08F1 /* AppDelegate.m */,
+				B99403A217A4643D002A08F1 /* MainStoryboard_iPhone.storyboard */,
+				B99403A517A4643D002A08F1 /* MainStoryboard_iPad.storyboard */,
+				B99403A817A4643D002A08F1 /* ViewController.h */,
+				B99403A917A4643D002A08F1 /* ViewController.m */,
+				B994039117A4643D002A08F1 /* Supporting Files */,
+			);
+			path = "yolo-octo-hipster";
+			sourceTree = "<group>";
+		};
+		B994039117A4643D002A08F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B994039217A4643D002A08F1 /* yolo-octo-hipster-Info.plist */,
+				B994039317A4643D002A08F1 /* InfoPlist.strings */,
+				B994039617A4643D002A08F1 /* main.m */,
+				B994039817A4643D002A08F1 /* yolo-octo-hipster-Prefix.pch */,
+				B994039C17A4643D002A08F1 /* Default.png */,
+				B994039E17A4643D002A08F1 /* Default@2x.png */,
+				B99403A017A4643D002A08F1 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B99403B717A4643D002A08F1 /* yolo-octo-hipsterTests */ = {
+			isa = PBXGroup;
+			children = (
+				B99403BD17A4643D002A08F1 /* yolo_octo_hipsterTests.h */,
+				B99403BE17A4643D002A08F1 /* yolo_octo_hipsterTests.m */,
+				B99403B817A4643D002A08F1 /* Supporting Files */,
+			);
+			path = "yolo-octo-hipsterTests";
+			sourceTree = "<group>";
+		};
+		B99403B817A4643D002A08F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B99403B917A4643D002A08F1 /* yolo-octo-hipsterTests-Info.plist */,
+				B99403BA17A4643D002A08F1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B994038617A4643C002A08F1 /* yolo-octo-hipster */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99403C217A4643D002A08F1 /* Build configuration list for PBXNativeTarget "yolo-octo-hipster" */;
+			buildPhases = (
+				B994038317A4643C002A08F1 /* Sources */,
+				B994038417A4643C002A08F1 /* Frameworks */,
+				B994038517A4643C002A08F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "yolo-octo-hipster";
+			productName = "yolo-octo-hipster";
+			productReference = B994038717A4643C002A08F1 /* yolo-octo-hipster.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B99403AF17A4643D002A08F1 /* yolo-octo-hipsterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99403C517A4643D002A08F1 /* Build configuration list for PBXNativeTarget "yolo-octo-hipsterTests" */;
+			buildPhases = (
+				B99403AB17A4643D002A08F1 /* Sources */,
+				B99403AC17A4643D002A08F1 /* Frameworks */,
+				B99403AD17A4643D002A08F1 /* Resources */,
+				B99403AE17A4643D002A08F1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B99403B617A4643D002A08F1 /* PBXTargetDependency */,
+			);
+			name = "yolo-octo-hipsterTests";
+			productName = "yolo-octo-hipsterTests";
+			productReference = B99403B017A4643D002A08F1 /* yolo-octo-hipsterTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B994037F17A4643C002A08F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Zach Hamed";
+			};
+			buildConfigurationList = B994038217A4643C002A08F1 /* Build configuration list for PBXProject "yolo-octo-hipster" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B994037E17A4643C002A08F1;
+			productRefGroup = B994038817A4643C002A08F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B994038617A4643C002A08F1 /* yolo-octo-hipster */,
+				B99403AF17A4643D002A08F1 /* yolo-octo-hipsterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B994038517A4643C002A08F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B994039517A4643D002A08F1 /* InfoPlist.strings in Resources */,
+				B994039D17A4643D002A08F1 /* Default.png in Resources */,
+				B994039F17A4643D002A08F1 /* Default@2x.png in Resources */,
+				B99403A117A4643D002A08F1 /* Default-568h@2x.png in Resources */,
+				B99403A417A4643D002A08F1 /* MainStoryboard_iPhone.storyboard in Resources */,
+				B99403A717A4643D002A08F1 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99403AD17A4643D002A08F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B99403BC17A4643D002A08F1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B99403AE17A4643D002A08F1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B994038317A4643C002A08F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B994039717A4643D002A08F1 /* main.m in Sources */,
+				B994039B17A4643D002A08F1 /* AppDelegate.m in Sources */,
+				B99403AA17A4643D002A08F1 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99403AB17A4643D002A08F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B99403BF17A4643D002A08F1 /* yolo_octo_hipsterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B99403B617A4643D002A08F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B994038617A4643C002A08F1 /* yolo-octo-hipster */;
+			targetProxy = B99403B517A4643D002A08F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B994039317A4643D002A08F1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B994039417A4643D002A08F1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B99403A217A4643D002A08F1 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B99403A317A4643D002A08F1 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		B99403A517A4643D002A08F1 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B99403A617A4643D002A08F1 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		B99403BA17A4643D002A08F1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B99403BB17A4643D002A08F1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B99403C017A4643D002A08F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B99403C117A4643D002A08F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B99403C317A4643D002A08F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yolo-octo-hipster/yolo-octo-hipster-Prefix.pch";
+				INFOPLIST_FILE = "yolo-octo-hipster/yolo-octo-hipster-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B99403C417A4643D002A08F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yolo-octo-hipster/yolo-octo-hipster-Prefix.pch";
+				INFOPLIST_FILE = "yolo-octo-hipster/yolo-octo-hipster-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B99403C617A4643D002A08F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/yolo-octo-hipster.app/yolo-octo-hipster";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yolo-octo-hipster/yolo-octo-hipster-Prefix.pch";
+				INFOPLIST_FILE = "yolo-octo-hipsterTests/yolo-octo-hipsterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B99403C717A4643D002A08F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/yolo-octo-hipster.app/yolo-octo-hipster";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "yolo-octo-hipster/yolo-octo-hipster-Prefix.pch";
+				INFOPLIST_FILE = "yolo-octo-hipsterTests/yolo-octo-hipsterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B994038217A4643C002A08F1 /* Build configuration list for PBXProject "yolo-octo-hipster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99403C017A4643D002A08F1 /* Debug */,
+				B99403C117A4643D002A08F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99403C217A4643D002A08F1 /* Build configuration list for PBXNativeTarget "yolo-octo-hipster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99403C317A4643D002A08F1 /* Debug */,
+				B99403C417A4643D002A08F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B99403C517A4643D002A08F1 /* Build configuration list for PBXNativeTarget "yolo-octo-hipsterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99403C617A4643D002A08F1 /* Debug */,
+				B99403C717A4643D002A08F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B994037F17A4643C002A08F1 /* Project object */;
+}
