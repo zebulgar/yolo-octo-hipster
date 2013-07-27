@@ -1,0 +1,20 @@
+<div id="demo"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  var demo = document.getElementById("demo");
+  var appendData = function(data, header) {
+    div = document.createElement("div");
+    div.innerHTML = (header ? header+":" : "") + JSON.stringify(data);
+    demo.appendChild(div);
+  }
+  socket.on('response', function (data) {
+    console.log(data);
+    appendData(data,"response")
+  });
+  var sendRequest = function(data) {
+    appendData(data,"request")
+    socket.emit("request",data);
+  }
+  // To use: "sendRequest({data:"data"})
+</script>
