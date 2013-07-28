@@ -208,6 +208,15 @@
         <div class="song-title">
           QUEUE
         </div>
+        <div class="bpm-sticker roll">
+          Roll
+        </div>
+        <div class="bpm-sticker pitch">
+          Pitch
+        </div>
+        <div class="bpm-sticker yaw">
+          Yaw
+        </div>
       </div>
       <div class="song-row green-row">
         <div class="song-name">
@@ -252,6 +261,22 @@
       <div class="song-row red-row">
         <div class="song-name">
           Skinny Love by Bon Iver
+        </div>
+        <div class="bpm-sticker">
+          40
+        </div>
+      </div>
+      <div class="song-row orange-row">
+        <div class="song-name">
+          Viva La Vida by Coldplay
+        </div>
+        <div class="bpm-sticker">
+          95
+        </div>
+      </div>
+      <div class="song-row red-row">
+        <div class="song-name">
+          The Funeral by Band of Horses
         </div>
         <div class="bpm-sticker">
           40
@@ -305,6 +330,22 @@
         var large = document.getElementById("bpm").offsetWidth;
         document.getElementById("bpm").style.marginLeft = -large/2;
       });
+
+      document.getElementsByClassName('roll')[0].onclick = function() {
+        console.log("CLICKED!");
+        var data = [];
+        socket.emit("roll",data);
+      };
+      document.getElementsByClassName('pitch')[0].onclick = function() {
+        console.log("CLICKED!");
+        var data = [];
+        socket.emit("pitch",data);
+      };
+      document.getElementsByClassName('yaw')[0].onclick = function() {
+        console.log("CLICKED!");
+        var data = [];
+        socket.emit("yaw",data);
+      };
       // socket.on('newDevice', function (data) {
       //   graphdata[data.id] = [];
       //   if(!graph) {
