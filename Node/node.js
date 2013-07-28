@@ -11,7 +11,7 @@ var express = require("express")
 , Duplex = require('stream').Duplex;
 
 var kSample = 0, kRoll = 1, kPitch = 2;
-var mode = kSample;
+var mode = kRoll;
 sample = new Duplex();
 sample.data = new Buffer(0);
 sample.rdata = undefined;
@@ -29,6 +29,12 @@ sample._read = function(n) {
       sample.start = new Date();
       if (mode == kSample) {
         this.push((this.forward ? this.data : this.rdata).slice(0,this.data.length/2));
+      }
+      else if (mode == kRoll) {
+        n = this.chunkSize;
+        var numbuckets = Math.floor(this.data.length/n)-1;
+        var dist = Math.floor(numbuckets*Math.min(1.0,this.pos))*n;
+        this.push(this.data.slice(dist,dist+n*this.len));
       }
     }
     else {
@@ -93,8 +99,8 @@ ws.on('message', function(data, flags) {
   frame = JSON.parse(data);
   if (frame.hands && frame.hands.length > 0) {
     if (mode == kSample) {
+      amplitude = 0.0;
       if (frame.pointables && frame.pointables.length >= 5) {
-        amplitude = 0.0;
         mag = 0;
         for(var i=0;i<frame.pointables.length;i++) {
           var point = frame.pointables[i]
@@ -108,7 +114,6 @@ ws.on('message', function(data, flags) {
       }
     }
     else if (mode == kPitch) {
-      console.log("hi");
       console.log(frame.pointables.length);
       if (frame.pointables && frame.pointables.length >= 5) {
         var height = frame.hands[0].palmPosition[1]/400.0;
@@ -117,6 +122,18 @@ ws.on('message', function(data, flags) {
       }
       else {
         amplitude = 0.0;
+      }
+    }
+    else if (mode == kRoll) {
+      amplitude = 0.0;
+      if (frame.pointables && frame.pointables.length > 0) {
+        if (true || (new Date() - sample.start) > sample.duration*8.0/sample.len/1.5) {
+          var height = frame.hands[0].palmPosition[1]/400.0;
+          sample.len = Math.pow(2,frame.pointables.length);
+          sample.pos = 0.8;
+          sample.flipflop = true;
+          sample.read(0);
+        }
       }
     }
   }
@@ -250,6 +267,9 @@ app.get('/sample', function (req, res) {
 app.get('/pitch', function (req, res) {
     mode = kPitch;
 });
+app.get('/roll', function (req, res) {
+    mode = kRoll;
+});
 app.get('/ping', function (req, res) {
     io.sockets.emit('response',{status: 'ping'});
 });
@@ -268,6 +288,9 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('pitch', function (data) {
     mode = kPitch;
+  });
+  socket.on('roll', function (data) {
+    mode = kRoll;
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
