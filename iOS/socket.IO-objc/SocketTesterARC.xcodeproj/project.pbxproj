@@ -38,6 +38,7 @@
 		4ADCCBF315790FDF0022990C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADCCBF215790FDF0022990C /* SystemConfiguration.framework */; };
 		4ADCCD4D157915F00022990C /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCCBC715790DEC0022990C /* SocketIO.m */; };
 		B99403E017A478BF002A08F1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99403DF17A478BF002A08F1 /* CoreMotion.framework */; };
+		B9BDEF7917A4960A0004EEF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */; };
 		C9E391A215E2A1B00004693A /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E391A115E2A1B00004693A /* SocketIOJSONSerialization.m */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		4ADCCBF015790FD30022990C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4ADCCBF215790FDF0022990C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B99403DF17A478BF002A08F1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9E391A015E2A1B00004693A /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = SOURCE_ROOT; };
 		C9E391A115E2A1B00004693A /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BDEF7917A4960A0004EEF7 /* CoreLocation.framework in Frameworks */,
 				B99403E017A478BF002A08F1 /* CoreMotion.framework in Frameworks */,
 				4A444FA31589E29500B44ABB /* Security.framework in Frameworks */,
 				4A444FA11589E28800B44ABB /* libicucore.dylib in Frameworks */,
@@ -168,6 +171,7 @@
 		4ADCCB9215790D760022990C = {
 			isa = PBXGroup;
 			children = (
+				B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */,
 				B99403DF17A478BF002A08F1 /* CoreMotion.framework */,
 				4ADCCBA715790D760022990C /* SocketTesterARC */,
 				4ADCCBA015790D760022990C /* Frameworks */,
