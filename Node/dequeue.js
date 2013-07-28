@@ -83,13 +83,29 @@ Dequeue.prototype.find_peaks = function() {
   var data = this.to_array();
   var high_peaks = []
   var low_peaks = []
-  for (int i = 1; i < data.length() - 1; i++) {
+  for (var i = 1; i < data.length() - 1; i++) {
     if(data[i-1] < data[i] && data[i] > data[i+1]) {
       high_peaks.push(i);
     } else if(data[i-1] > data[i] && data[i] < data[i+1]) {
       low_peaks.push(i);
     }
   }
+  /** TODO: Return Low Peaks/High Peaks **/
+}
+
+/** Simple Low-Pass Filter **/
+Dequeue.prototype.low_pass = function() {
+  var out = []
+  var smoothing = 10;
+  var smoothed = this._front;
+  for (var i = 1; i < data.length(); i++) {
+    out.push(smoothed.data)
+    var next = smoothed._next;
+    var elapsedTime = next.date - smoothed.date;
+    var smoothedValue = smoothed._data + elapsedTime * (next._data - smoothed._data) / smoothing;
+    smoothed = next;
+  }
+  return out;
 }
 
 module.exports = Dequeue;
