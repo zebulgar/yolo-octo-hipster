@@ -99,7 +99,9 @@ static NSString* kSecureSocketPortURL = @"wss://%@:%d/socket.io/1/websocket/%@";
 
 - (void) webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
+    NSLog(@"tracing up the tree");
     [delegate onData:message];
+
 }
 
 - (void) webSocketDidOpen:(SRWebSocket *)webSocket

@@ -27,6 +27,7 @@
 
 #import "SocketIOTransportWebsocket.h"
 #import "SocketIOTransportXHR.h"
+#import "AppDelegate.h"
 
 #define DEBUG_LOGS 1
 #define DEBUG_CERTIFICATE 1
@@ -469,7 +470,25 @@ NSString* const SocketIOException = @"SocketIOException";
 - (void) onData:(NSString *)data
 {
     DEBUGLOG(@"onData %@", data);
+
+    NSScanner *scanner = [NSScanner scannerWithString:data];
+    if (![scanner scanUpToString:@"\"id\":" intoString:nil]) {
+        // there is no opening tag
+    }
+    NSString *result = nil;
+    if (![scanner scanUpToString:@"}" intoString:&result]) {
+        // there is no closing tag
+    }
+
+    NSString *cleanedString = [[result componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     
+    if ([cleanedString length] != 0) {
+        idnumber = cleanedString;
+
+    }
+
+    
+    NSLog(@"Well here it is %@", idnumber);
     // data arrived -> reset timeout
     [self setTimeout];
     
