@@ -31,13 +31,14 @@ public class AccelerometerService extends Service implements SensorEventListener
     private String regId;
     long lastPickedUp = 0;
     ToServer tos;
+    PowerManager.WakeLock wakeLock;
 
     @Override
     public void onCreate() {
         Log.v(TAG, "AccelerometerService created");
 
         PowerManager mgr = (PowerManager)this.getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakeLock");
+        wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakeLock");
         wakeLock.acquire();
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -64,6 +65,7 @@ public class AccelerometerService extends Service implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        wakeLock.acquire();
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float[] values = event.values;
             // Movement
@@ -80,6 +82,7 @@ public class AccelerometerService extends Service implements SensorEventListener
             tos.sendAccelerometer(values);
 
         }
+        wakeLock.release();
     }
 
     @Override
