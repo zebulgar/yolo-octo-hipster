@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SocketIO.h"
+#import "SocketIOPacket.h"
 #import <CoreMotion/CoreMotion.h>
 #import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
 
 UIBackgroundTaskIdentifier bgTask;
 

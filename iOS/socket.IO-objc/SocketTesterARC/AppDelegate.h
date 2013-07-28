@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class ViewController;
+
+NSString *idnumber;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

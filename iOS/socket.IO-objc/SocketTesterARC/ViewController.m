@@ -40,6 +40,10 @@
     // connect to the socket.io server that is running locally at port 3000
     [socketIO connectToHost:@"172.16.240.179" onPort:3000];
     
+    SocketIOCallback cb = ^(id argsData) {
+        NSDictionary *response = argsData;
+    };
+
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
     self.motionManager.gyroUpdateInterval = .2;
@@ -93,39 +97,57 @@
     
     // connect to the socket.io server that is running locally at port 3000
     [socketIO connectToHost:@"172.16.240.179" onPort:3000];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.x] forKey:@"x"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.y] forKey:@"y"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.z] forKey:@"z"];
+    NSLog(@"delian sucks2");
 
-    
-    [socketIO sendEvent:@"request" withData:dict];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:[NSString stringWithFormat:@" %.2f",acceleration.x] forKey:@"x"];
+    [dict setObject:[NSString stringWithFormat:@" %.2f",acceleration.y] forKey:@"y"];
+    [dict setObject:[NSString stringWithFormat:@" %.2f",acceleration.z] forKey:@"z"];
+    [dict setObject:[NSString stringWithFormat:@"%@",idnumber] forKey:@"id"];
+
+    SocketIOCallback cb = ^(id argsData) {
+        NSDictionary *response = argsData;
+        NSLog(@"delian sucks");
+        NSLog(@"Maybe here is the response %@", response);
+    };
+    [socketIO sendEvent:@"accelerometer" withData:dict andAcknowledge:cb];
 
     
 }
--(void)outputRotationData:(CMRotationRate)rotation
+
+- (void) socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet
 {
-    
-    socketIO = [[SocketIO alloc] initWithDelegate:self];
-    
-    // you can update the resource name of the handshake URL
-    // see https://github.com/pkyeck/socket.IO-objc/pull/80
-    // [socketIO setResourceName:@"whatever"];
-    
-    // if you want to use https instead of http
-    // socketIO.useSecure = YES;
-    
-    // connect to the socket.io server that is running locally at port 3000
-    [socketIO connectToHost:@"172.16.240.179" onPort:3000];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.x] forKey:@"x"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.y] forKey:@"y"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.z] forKey:@"z"];
-    
-    
-    [socketIO sendEvent:@"request" withData:dict];
-    
+    NSLog(@"Received this data: %@", packet.data);
 }
+
+//- (void) socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet {
+//    NSLog(@"Received response: %@", packet);
+//    
+//}
+
+//-(void)outputRotationData:(CMRotationRate)rotation
+//{
+//    
+//    socketIO = [[SocketIO alloc] initWithDelegate:self];
+//    
+//    // you can update the resource name of the handshake URL
+//    // see https://github.com/pkyeck/socket.IO-objc/pull/80
+//    // [socketIO setResourceName:@"whatever"];
+//    
+//    // if you want to use https instead of http
+//    // socketIO.useSecure = YES;
+//    
+//    // connect to the socket.io server that is running locally at port 3000
+//    [socketIO connectToHost:@"172.16.240.165" onPort:3000];
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.x] forKey:@"x"];
+//    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.y] forKey:@"y"];
+//    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.z] forKey:@"z"];
+//    
+//    
+//    [socketIO sendEvent:@"request" withData:dict];
+//    
+//}
 
 
 # pragma mark -
@@ -144,17 +166,17 @@
         NSDictionary *response = argsData;
         // do something with response
         NSLog(@"ack arrived: %@", response);
-        
         // test forced disconnect
-        [socketIO disconnectForced];
+        //[socketIO disconnectForced];
     };
-    [socketIO sendMessage:@"hello back!" withAcknowledge:cb];
+    [socketIO sendMessage:@"accelerometer" withAcknowledge:cb];
 }
 
 - (void) socketIO:(SocketIO *)socket onError:(NSError *)error
 {
     NSLog(@"onError() %@", error);
 }
+
 
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
