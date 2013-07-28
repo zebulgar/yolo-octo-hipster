@@ -12,8 +12,12 @@
       <h2 id="inner-bpm">
       </h2>
     </div>
-    <div id="chart"></div>
-    <div id="demo"></div>
+    <div id="chart-holder"><div id="chart"></div></div>
+    <div id="members">
+      <div class="member">
+        1
+      </div>
+    </div>
     <script>
       var graphdata = [];
       var graphing = [];
@@ -31,24 +35,29 @@
         // appendData(data,"response")
       });
       socket.on('bpm', function (data) {
-        document.getElementById("inner-bpm").innerHTML = data.bpm + " BPM";
+        data.bpm = Math.round(data.bpm);
+        document.getElementById("inner-bpm").innerHTML = data.bpm + " <div id='actual-bpm'>BPM</div>";
+        var large = document.getElementById("bpm").offsetWidth;
+        document.getElementById("bpm").style.marginLeft = -large/2;
       });
-      socket.on('newDevice', function (data) {
-        graphdata[data.id] = [];
-        if(!graph) {
-          graph = new Rickshaw.Graph({
-            element: document.querySelector("#chart"),
-            width: window.innerWidth,
-            height: 800,
-            renderer: "line",
-            stroke: true,
-            strokeWidth: 8,
-            series: [{color: "#000000", data: graphdata[data.id]}]
-          });
-        }
-        graph.series.push({color: "#0000FF", data: graphdata[data.id]});
-        graphing[data.id] = true;
-      });
+      // socket.on('newDevice', function (data) {
+      //   graphdata[data.id] = [];
+      //   if(!graph) {
+      //     graph = new Rickshaw.Graph({
+      //       element: document.querySelector("#chart"),
+      //       width: window.innerWidth,
+      //       height: 800,
+      //       renderer: "line",
+      //       min: 0,
+      //       max: 4,
+      //       stroke: true,
+      //       strokeWidth: 8,
+      //       series: [{color: "#000000", data: graphdata[data.id]}]
+      //     });
+      //   }
+      //   graph.series.push({color: "#0000FF", data: graphdata[data.id]});
+      //   graphing[data.id] = true;
+      // });
       socket.on('accelData', function (data) {
         if(!graphdata[data.id]) {
           graphdata[data.id] = [];
@@ -56,16 +65,18 @@
         while (graphdata[data.id].length == len) {
           graphdata[data.id].shift()
         }
-        graphdata[data.id].push({x:(new Date(data.date)).valueOf(),y:data.magnitude});
+        var date = (new Date(data.date)).valueOf();
+        if(date) {
+          graphdata[data.id].push({x:date,y:data.magnitude});
+        }
         if(!graph) {
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
             width: window.innerWidth,
             height: 300,
             renderer: "line",
-            padding: {top: .05},
             min: 0,
-            max: 3,
+            max: 4,
             stroke: true,
             strokeWidth: 8,
             series: [{color: "#1fcc71", data: graphdata[data.id]}]
@@ -78,12 +89,13 @@
           x_axis = new Rickshaw.Graph.Axis.Time({graph: graph})
         }
         if(graphing[data.id] != true) {
-          if(data.id == 99) {
+          if(data.id == 0) {
             graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
           } else {
             graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
           }
           graphing[data.id] = true;
+          graphdata[data.id] = [];
         }
         graph.render();
       });
@@ -91,7 +103,6 @@
         // appendData(data,"request")
         socket.emit("request",data);
       }
-
       // To use: "sendRequest({data:"data"})
     </script>
   </body>

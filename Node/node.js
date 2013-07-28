@@ -10,8 +10,8 @@ server.listen(3000)
 
 var allData = []
 
-/** Each concert-goer keeps at most 10s of data **/
-var accelLimit = 10000;
+/** Each concert-goer keeps at most 5s of data **/
+var accelLimit = 5000;
 
 var devices = 1;
 setInterval(function() {
@@ -101,8 +101,8 @@ setInterval(function() {
   if(newData.length != 0) {
     var avg = total / newData.length;
     var avgBPM = totalBPM / allBpm.length;
-    io.sockets.emit('bpm', {id: 99, bpm: avgBPM});
-    io.sockets.emit('accelData',{id: 99, date: (new Date()), magnitude: avg});
+    io.sockets.emit('bpm', {id: 0, bpm: avgBPM});
+    io.sockets.emit('accelData',{id: 0, date: (new Date()), magnitude: avg});
   }
 }, 100);
 setInterval(function() {

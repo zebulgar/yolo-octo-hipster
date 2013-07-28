@@ -26,7 +26,7 @@
     <ignored path="Android.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374957001613" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374991189702" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1375003083552" ignored="false" />
     <file path="/MainActivity.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374980637132" ignored="false" />
     <file path="/Dummy.txt" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374981705655" ignored="false" />
     <file path="/AccelerometerService.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374989964459" ignored="false" />
@@ -484,7 +484,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1253" height="956" extended-state="0" />
+    <frame x="0" y="22" width="1253" height="956" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -502,7 +502,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26926264" sideWeight="0.72248805" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27751195" sideWeight="0.49958575" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27751195" sideWeight="0.49958575" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="2" side_tool="false" content_ui="tabs" />
