@@ -4,6 +4,10 @@
 	line-height: 0px;
 }
 
+body {
+	background-color: #303030;
+}
+
 .bpm-sticker {
 	background: white;
 	margin-top: 10px;
