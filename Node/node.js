@@ -11,7 +11,7 @@ var express = require("express")
 , Duplex = require('stream').Duplex;
 
 var kSample = 0, kRoll = 1, kPitch = 2;
-var mode = kRoll;
+var mode = kSample;
 sample = new Duplex();
 sample.data = new Buffer(0);
 sample.rdata = undefined;
@@ -114,10 +114,9 @@ ws.on('message', function(data, flags) {
       }
     }
     else if (mode == kPitch) {
-      console.log(frame.pointables.length);
       if (frame.pointables && frame.pointables.length >= 5) {
         var height = frame.hands[0].palmPosition[1]/400.0;
-        pbuff = height*4000.0 / pico.samplerate;
+        pbuff = height*800.0 / pico.samplerate;
         amplitude = 1.0;
       }
       else {
@@ -129,7 +128,7 @@ ws.on('message', function(data, flags) {
       if (frame.pointables && frame.pointables.length > 0) {
         if (true || (new Date() - sample.start) > sample.duration*8.0/sample.len/1.5) {
           var height = frame.hands[0].palmPosition[1]/400.0;
-          sample.len = Math.pow(2,frame.pointables.length);
+          sample.len = Math.pow(2,frame.pointables.length-1);
           sample.pos = 0.8;
           sample.flipflop = true;
           sample.read(0);

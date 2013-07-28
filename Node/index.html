@@ -84,12 +84,6 @@
             delete fingers[fingerId];
           }
         }
-        document.getElementById('showHands').addEventListener('mousedown', function() {
-          document.getElementById('app').setAttribute('class','show-hands');
-        }, false);
-        document.getElementById('hideHands').addEventListener('mousedown', function() {
-          document.getElementById('app').setAttribute('class','');
-        }, false);
       });
 
     </script>
@@ -188,6 +182,7 @@
       .finger .face.bk { -webkit-transform: rotateX(90deg); }
       .finger .face.lt { -webkit-transform: rotateY(90deg) translateX(-1em); height: 3em;}
       .finger .face.rt { -webkit-transform: rotateY(90deg) translateX(-1em) translateZ(1em); height: 3em;}
+      .selected {color: #ff0000 !important}
 
     </style>
     <link href="/style/rickshaw.css" media="all" rel="stylesheet" type="text/css" />
@@ -214,7 +209,7 @@
         <div class="bpm-sticker pitch">
           Pitch
         </div>
-        <div class="bpm-sticker yaw">
+        <div class="bpm-sticker selected yaw">
           Yaw
         </div>
       </div>
@@ -332,19 +327,19 @@
       });
 
       document.getElementsByClassName('roll')[0].onclick = function() {
-        console.log("CLICKED!");
-        var data = [];
-        socket.emit("roll",data);
+        document.getElementsByClassName('selected')[0].className = document.getElementsByClassName('selected')[0].className.replace("selected","");
+        document.getElementsByClassName('roll')[0].className+= " selected";
+        socket.emit("roll",{});
       };
       document.getElementsByClassName('pitch')[0].onclick = function() {
-        console.log("CLICKED!");
-        var data = [];
-        socket.emit("pitch",data);
+        document.getElementsByClassName('selected')[0].className = document.getElementsByClassName('selected')[0].className.replace("selected","");
+        document.getElementsByClassName('pitch')[0].className+= " selected";
+        socket.emit("pitch",{});
       };
       document.getElementsByClassName('yaw')[0].onclick = function() {
-        console.log("CLICKED!");
-        var data = [];
-        socket.emit("yaw",data);
+        document.getElementsByClassName('selected')[0].className = document.getElementsByClassName('selected')[0].className.replace("selected","");
+        document.getElementsByClassName('yaw')[0].className+= " selected";
+        socket.emit("sample",{});
       };
       // socket.on('newDevice', function (data) {
       //   graphdata[data.id] = [];
