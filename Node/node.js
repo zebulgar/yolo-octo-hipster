@@ -3,14 +3,35 @@ var express = require("express")
 , dequeue = require("./dequeue.js")
 , webSocket = require('ws')
 , ws = new webSocket('ws://127.0.0.1:6437')
+, pico = require("node-pico")
 , audio = require("./build/Release/audio");
 
+
+pico.setup({samplerate:48000, cellsize: 64});
+var pbuff = 0;
+var alpha = 0.99;
+function sinetone(freq) {
+  var phase = 0;
+  var phaseStep = freq / pico.samplerate;
+  pbuff = phaseStep;
+  return {
+    process: function(L, R) {
+      phaseStep = alpha * phaseStep + (1 - alpha) * pbuff;
+      for (var i = 0; i < L.length; i++) {
+        L[i] = R[i] = Math.sin(6.28318 * phase);
+        phase += phaseStep;
+      }
+    }
+  };
+}
+//setInterval(function(){pbuff+=pbuff/100.0;},50);
+
+pico.play(sinetone(40));
 ws.on('message', function(data, flags) {
   frame = JSON.parse(data);
   if (frame.hands && frame.hands.length > 0) {
-    var height = frame.hands[0].palmPosition[1]/300.0;
-    console.log(height*10);
-    audio.setVol(Math.min(1.0,height));
+    var height = frame.hands[0].palmPosition[1]/400.0;
+    pbuff = height*4000.0 / pico.samplerate;
   }
 });
 
