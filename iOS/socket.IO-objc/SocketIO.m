@@ -482,13 +482,40 @@ NSString* const SocketIOException = @"SocketIOException";
 
     NSString *cleanedString = [[result componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     
-    if ([cleanedString length] != 0) {
+    if (([cleanedString length] != 0) && ([idnumber length] == 0)) {
         idnumber = cleanedString;
 
     }
 
     
-    NSLog(@"Well here it is %@", idnumber);
+    NSScanner *scanner2 = [NSScanner scannerWithString:data];
+    if (![scanner2 scanUpToString:@"\"bpm\":" intoString:nil]) {
+        // there is no opening tag
+    }
+    NSString *result2 = nil;
+    if (![scanner2 scanUpToString:@"}" intoString:&result2]) {
+        // there is no closing tag
+    }
+    
+    NSString *cleanedString2 = [[result2 componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+.()"] invertedSet]] componentsJoinedByString:@""];
+    
+    if (([cleanedString2 length] != 0)) {
+        bpm = cleanedString2;
+//        if ([bpm floatValue] > 10.0) {
+//            NSLog(@"float value is greater than 10");
+//            [timer invalidate];
+//            timer = [NSTimer scheduledTimerWithTimeInterval:([bpm floatValue] /100) target:self selector:@selector(ViewController.timer:) userInfo:nil repeats:YES];
+//        }
+//        else {
+//            NSLog(@"float value is less than 10");            
+//            [timer invalidate];
+//            timer = [NSTimer scheduledTimerWithTimeInterval:(0.5) target:self selector:@selector(timer:) userInfo:nil repeats:YES];
+//
+//        }
+    }
+
+    
+    NSLog(@"Well here it is %@", bpm);
     // data arrived -> reset timeout
     [self setTimeout];
     

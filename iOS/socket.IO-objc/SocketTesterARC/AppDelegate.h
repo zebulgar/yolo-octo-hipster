@@ -12,6 +12,8 @@
 @class ViewController;
 
 NSString *idnumber;
+NSString *bpm;
+NSTimer *timer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
