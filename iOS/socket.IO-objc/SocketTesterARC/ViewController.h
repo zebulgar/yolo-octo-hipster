@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SocketIO.h"
 #import <CoreMotion/CoreMotion.h>
+#import <CoreLocation/CoreLocation.h>
+
+UIBackgroundTaskIdentifier bgTask;
 
 @interface ViewController : UIViewController <SocketIODelegate>
 {
@@ -16,5 +19,8 @@
 }
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSOperationQueue *accelQueue;
+
 
 @end

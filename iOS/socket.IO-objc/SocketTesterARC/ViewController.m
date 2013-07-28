@@ -18,6 +18,15 @@
 {
     [super viewDidLoad];
     
+    if (self.locationManager == nil) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = 10.f;
+        [self.locationManager startUpdatingLocation];
+    }
+
+    
     // create socket.io client instance
     socketIO = [[SocketIO alloc] initWithDelegate:self];
     
@@ -34,9 +43,20 @@
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
     self.motionManager.gyroUpdateInterval = .2;
-    
+    UIApplication *app = [UIApplication sharedApplication];
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+
     [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                              withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+                                                 NSTimeInterval remaining = [[UIApplication sharedApplication] backgroundTimeRemaining];
+                                                 if (remaining < 600) {
+                                                     NSLog(@"time remaining: %f",remaining);
+                                                     [self.locationManager stopUpdatingLocation];
+                                                     [self.locationManager startUpdatingLocation];
+                                                 }
+
                                                  [self outputAccelertionData:accelerometerData.acceleration];
                                                  if(error){
                                                      
@@ -44,11 +64,19 @@
                                                  }
                                              }];
     
-    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
-                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
-                                        [self outputRotationData:gyroData.rotationRate];
-                                    }];
+//    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+//                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
+//                                        NSTimeInterval remaining = [[UIApplication sharedApplication] backgroundTimeRemaining];
+//                                        if (remaining < 600) {
+//                                            NSLog(@"time remaining: %f",remaining);
+//                                            [self.locationManager stopUpdatingLocation];
+//                                            [self.locationManager startUpdatingLocation];
+//                                        }
+//
+//                                        [self outputRotationData:gyroData.rotationRate];
+//                                    }];
     
+    [app endBackgroundTask:bgTask];
 
 }
 
@@ -66,9 +94,9 @@
     // connect to the socket.io server that is running locally at port 3000
     [socketIO connectToHost:@"172.16.240.179" onPort:3000];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.x] forKey:@"accX"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.y] forKey:@"accY"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.z] forKey:@"accZ"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.x] forKey:@"x"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.y] forKey:@"y"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",acceleration.z] forKey:@"z"];
 
     
     [socketIO sendEvent:@"request" withData:dict];
@@ -90,9 +118,9 @@
     // connect to the socket.io server that is running locally at port 3000
     [socketIO connectToHost:@"172.16.240.179" onPort:3000];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.x] forKey:@"rotX"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.y] forKey:@"rotY"];
-    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.z] forKey:@"rotZ"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.x] forKey:@"x"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.y] forKey:@"y"];
+    [dict setObject:[NSString stringWithFormat:@" %.2fg",rotation.z] forKey:@"z"];
     
     
     [socketIO sendEvent:@"request" withData:dict];
@@ -164,5 +192,7 @@
     
     [socketIO sendEvent:@"request" withData:dict];
 }
+
+
 
 @end
