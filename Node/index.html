@@ -1,20 +1,57 @@
-<div id="demo"></div>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io.connect('http://localhost');
-  var demo = document.getElementById("demo");
-  var appendData = function(data, header) {
-    div = document.createElement("div");
-    div.innerHTML = (header ? header+":" : "") + JSON.stringify(data);
-    demo.appendChild(div);
-  }
-  socket.on('response', function (data) {
-    console.log(data);
-    appendData(data,"response")
-  });
-  var sendRequest = function(data) {
-    appendData(data,"request")
-    socket.emit("request",data);
-  }
-  // To use: "sendRequest({data:"data"})
-</script>
+<html>
+  <head>
+    <link href="/style/rickshaw.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/rickshaw.js"></script>
+    <script src="/js/d3.min.js"></script>
+    <link>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <div id="demo"></div>
+    <script>
+      var graphdata = [];
+      var graph = undefined;
+      var socket = io.connect('http://localhost');
+      var demo = document.getElementById("demo");
+      var appendData = function(data, header) {
+        div = document.createElement("div");
+        div.innerHTML = (header ? header+":" : "") + JSON.stringify(data);
+        demo.appendChild(div);
+      }
+      socket.on('response', function (data) {
+        console.log(data);
+        appendData(data,"response")
+      });
+      socket.on('accelData', function (data) {
+        console.log(data);
+        appendData(data,"accel data")
+        graphdata.push({x:(new Date()).valueOf(),y:data.numEvents});
+        if(!graph) {
+          graph = new Rickshaw.Graph({
+            element: document.querySelector("#chart"),
+            width: 1000,
+            height: 1000,
+            renderer: "line",
+            stroke: true,
+            series: [{color: "#000000", data: graphdata}]
+          });
+          yAxis = new Rickshaw.Graph.Axis.Y({
+            graph: graph,
+            tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+          });
+          x_axis = new Rickshaw.Graph.Axis.Time({graph: graph})
+        }
+        graph.render();
+      });
+      var sendRequest = function(data) {
+        appendData(data,"request")
+        socket.emit("request",data);
+      }
+      setInterval(function(){for(var i=0;i<Math.random()*7;i+=1){socket.emit("accelerometer",{x:Math.random(),y:Math.random(),z:Math.random()})}},100)
+      setInterval(function(){socket.emit("accelData")},1000)
+
+      // To use: "sendRequest({data:"data"})
+    </script>
+  </body>
+</html>
