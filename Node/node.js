@@ -4,8 +4,64 @@ var express = require("express")
 , webSocket = require('ws')
 , ws = new webSocket('ws://127.0.0.1:6437')
 , pico = require("node-pico")
-, audio = require("./build/Release/audio");
+, audio = require("./build/Release/audio")
+, fs = require("fs")
+, Speaker = require('speaker')
+, Reader = require('wav').Reader
+, Duplex = require('stream').Duplex;
 
+
+sample = new Duplex();
+sample.data = new Buffer(0);
+sample.done = false;
+sample.flipflop = true;
+sample.pos = 0;
+sample.len = 8;
+sample._read = function(n) {
+  if (this.done) {
+    //console.log("pushing");
+    if (this.flipflop) {
+      this.flipflop = false;
+      n = this.chunkSize;
+      var numbuckets = Math.floor(this.data.length/n)-1;
+      console.log(Math.floor(this.pos*Math.floor(this.data.length/n)));
+      console.log(Math.floor(this.data.length/n));
+      var dist = Math.floor(numbuckets*Math.min(1.0,this.pos))*n;
+      this.push(this.data.slice(dist,dist+n*this.len));
+      this.push('');
+      //console.log("flipped");
+    }
+    else {
+      //console.log("pausing");
+      this.push('');
+    }
+  }
+  else {
+    //console.log("not done");
+    this.push('');
+  }
+}
+sample._write = function(chunk, encoding, done) {
+  if (typeof encoding == 'function') done = encoding;
+  //console.log(chunk.length);
+  this.data = Buffer.concat([this.data, chunk]);
+  //console.log(this.data.length);
+  return done();
+}
+sample.on('finish', function() { this.done = true; console.log("end");});
+var reader = new Reader();
+readStream = fs.createReadStream("ahh.wav");
+reader.on('format', function (format) {
+  console.error('format:', format);
+  var s = new Speaker(format);
+  sample.chunkSize = (s.bitDepth / 8 * s.channels) * s.samplesPerFrame;
+  reader.pipe(sample).pipe(s);
+});
+
+reader.on('error', function (err) {
+  console.error('Reader error: %s', err);
+});
+readStream.pipe(reader);
 
 pico.setup({samplerate:48000, cellsize: 64});
 var pbuff = 0;
@@ -26,12 +82,23 @@ function sinetone(freq) {
 }
 //setInterval(function(){pbuff+=pbuff/100.0;},50);
 
-pico.play(sinetone(40));
+i=0;
+//pico.play(sinetone(40));
 ws.on('message', function(data, flags) {
   frame = JSON.parse(data);
   if (frame.hands && frame.hands.length > 0) {
-    var height = frame.hands[0].palmPosition[1]/400.0;
-    pbuff = height*4000.0 / pico.samplerate;
+    if (frame.pointables && frame.pointables.length > 0) {
+      console.log(frame.pointables.length);
+      var height = frame.hands[0].palmPosition[1]/400.0;
+      pbuff = height*4000.0 / pico.samplerate;
+      sample.len = Math.pow(2,frame.pointables.length);
+      sample.pos = 0.6;
+      //sample.pos = i;
+      i+=1.0/1000;
+      sample.flipflop = true;
+      sample.read(0);
+      //console.log("event");
+    }
   }
 });
 
