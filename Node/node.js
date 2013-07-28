@@ -1,6 +1,18 @@
 var express = require("express")
 , http = require("http")
-, dequeue = require("./dequeue.js");
+, dequeue = require("./dequeue.js")
+, webSocket = require('ws')
+, ws = new webSocket('ws://127.0.0.1:6437')
+, audio = require("./build/Release/audio");
+
+ws.on('message', function(data, flags) {
+  frame = JSON.parse(data);
+  if (frame.hands && frame.hands.length > 0) {
+    var height = frame.hands[0].palmPosition[1]/300.0;
+    console.log(height*10);
+    audio.setVol(Math.min(1.0,height));
+  }
+});
 
 var app = express()
     , server = http.createServer(app)
@@ -14,13 +26,7 @@ setInterval(function() {
   var time = new Date();
   while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
     accelData.pop_back();
-    console.log("INNER DIFF: " + (time - accelData.peek_back().date));
   }
-  if(!accelData.empty()) {
-    console.log("OUTER DIF: " + (accelData.peek_back().date));
-  }
-  console.log(accelData.length);
-  console.log("DATA2: " + accelData.peek_back())
 }, 5000);
 
 app.use("/js", express.static(__dirname + '/js'));
@@ -34,7 +40,6 @@ app.get('/', function (req, res) {
 });
 app.get('/ping', function (req, res) {
     io.sockets.emit('response',{status: 'ping'});
-    console.log("pinging");
 });
 
 io.sockets.on('connection', function (socket) {
@@ -45,7 +50,6 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
-    console.log("DATA1: " + data);
     accelData.push(data);
     io.sockets.emit('accelData',{numEvents:accelData.peek_magnitude()});
   });
