@@ -19,20 +19,21 @@
     </option>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="YOLO" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Device ID:" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" name="Default" comment="" />
     <ignored path="Android.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374957001613" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374970008384" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374976354662" ignored="false" />
     <file path="/MainActivity.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958432173" ignored="false" />
     <file path="/Dummy.txt" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374958178290" ignored="false" />
-    <file path="/AccelerometerService.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374969891395" ignored="false" />
+    <file path="/AccelerometerService.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374976351042" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/yolo/octo/hipster/Manifest.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374968302614" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374964275448" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/yolo/octo/hipster/BuildConfig.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374968351884" ignored="false" />
+    <file path="/ServerID.java" changelist="57a8b59d-6db8-49b6-9bae-6c38eae9ac3e" time="1374976094518" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,10 +115,19 @@
       <file leaf-file-name="AccelerometerService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="46" selection-start="2443" selection-end="2443" vertical-scroll-proportion="0.33854166">
+            <state line="107" column="52" selection-start="3302" selection-end="3302" vertical-scroll-proportion="0.36525613">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerID.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/ServerID.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="74" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -155,6 +165,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/yolo/octo/hipster/MainActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/yolo/octo/hipster/ServerID.java" />
         <option value="$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java" />
       </list>
     </option>
@@ -480,17 +491,17 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4138756" sideWeight="0.44241923" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4138756" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4138756" sideWeight="0.55758077" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16404308" sideWeight="0.72248805" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27751195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26926264" sideWeight="0.5861244" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27751195" sideWeight="0.49958575" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970837" sideWeight="0.6698565" order="2" side_tool="false" content_ui="tabs" />
@@ -623,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="63" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
@@ -637,9 +641,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="8" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/socketio.jar!/io/socket/IOCallback.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.17162472">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/ServerID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="74" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/yolo/octo/hipster/AccelerometerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="46" selection-start="2443" selection-end="2443" vertical-scroll-proportion="0.33854166">
+        <state line="107" column="52" selection-start="3302" selection-end="3302" vertical-scroll-proportion="0.36525613">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

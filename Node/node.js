@@ -22,6 +22,7 @@ server.listen(3000)
 
 var accelData = new dequeue();
 var accelLimit = 5000;
+var devices = 1;
 setInterval(function() {
   var time = new Date();
   while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
@@ -43,7 +44,7 @@ app.get('/ping', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('response', { hello: 'world' });
+  socket.emit('response', { id: 1 });
   socket.on('request', function (data) {
     console.log(data);
     io.sockets.emit('response',data)

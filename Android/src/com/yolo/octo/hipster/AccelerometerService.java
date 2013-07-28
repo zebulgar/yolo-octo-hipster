@@ -32,6 +32,7 @@ public class AccelerometerService extends Service implements SensorEventListener
     long lastPickedUp = 0;
     ToServer tos;
     PowerManager.WakeLock wakeLock;
+    int deviceID;
 
     @Override
     public void onCreate() {
@@ -98,23 +99,28 @@ public class AccelerometerService extends Service implements SensorEventListener
             SocketIO.setDefaultSSLSocketFactory(SSLContext.getDefault());
             SocketIO.setDefaultSSLSocketFactory(SSLContext.getInstance("Default"));
             socket = new SocketIO("http://172.16.240.165:3000/", this);
-            socket.emit("request", "SERVER RECIEVED ANDROID");
             socket.send("HELLO SERVER");
             Log.v(TAG, "ToServer connecting");
         }
 
         public void sendAccelerometer(float[] values) {
-            socket.emit("request", "{x:"+values[0]+", y: "+values[1]+", z: "+values[2]+"}");
+            try {
+                Log.v(TAG, "Device ID:  " + deviceID);
+                socket.emit("accelerometer", new JSONObject("{x:"+values[0]+", y: "+values[1]+", z: "+values[2]+", id: "+ deviceID +"}"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         }
         @Override
         public void onMessage(JSONObject json, IOAcknowledge ack) {
-            System.out.println("MESSAGE: " + json);
+            Log.v(TAG, "ToServer Message: " + json);
         }
 
         @Override
         public void onMessage(String data, IOAcknowledge ack) {
-            System.out.println("MESSAGE: " + data);
+            Log.v(TAG, "ToServer Message: " + data);
         }
 
         @Override
@@ -135,7 +141,13 @@ public class AccelerometerService extends Service implements SensorEventListener
 
         @Override
         public void on(String event, IOAcknowledge ack, Object... args) {
-            Log.d("Event",event );
+            Log.v(TAG,"ToServer Event occurred: " +event );
+            Log.v(TAG, "ToServer Event data: " + args[0] );
+            ServerID id = gson.fromJson(args[0].toString(), ServerID.class);
+            if(id.id != 0) {
+                Log.v(TAG, "ToServer ID: " + id.id );
+                deviceID = id.id;
+            }
         }
     }
 
