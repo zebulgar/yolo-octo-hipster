@@ -1,12 +1,17 @@
 <html>
   <head>
     <link href="/style/rickshaw.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/style/application.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/rickshaw.js"></script>
     <script src="/js/d3.min.js"></script>
     <link>
   </head>
   <body>
+    <div id="bpm">
+      <h2 id="inner-bpm">
+      </h2>
+    </div>
     <div id="chart"></div>
     <div id="demo"></div>
     <script>
@@ -23,17 +28,21 @@
       }
       socket.on('response', function (data) {
         console.log(data);
-        appendData(data,"response")
+        // appendData(data,"response")
+      });
+      socket.on('bpm', function (data) {
+        document.getElementById("inner-bpm").innerHTML = data.bpm + " BPM";
       });
       socket.on('newDevice', function (data) {
         graphdata[data.id] = [];
         if(!graph) {
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
-            width: 1000,
+            width: window.innerWidth,
             height: 800,
             renderer: "line",
             stroke: true,
+            strokeWidth: 8,
             series: [{color: "#000000", data: graphdata[data.id]}]
           });
         }
@@ -41,7 +50,6 @@
         graphing[data.id] = true;
       });
       socket.on('accelData', function (data) {
-        appendData(data,"accel data")
         if(!graphdata[data.id]) {
           graphdata[data.id] = [];
         }
@@ -52,11 +60,15 @@
         if(!graph) {
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
-            width: 1000,
-            height: 800,
+            width: window.innerWidth,
+            height: 300,
             renderer: "line",
+            padding: {top: .05},
+            min: 0,
+            max: 3,
             stroke: true,
-            series: [{color: "#0000FF", data: graphdata[data.id]}]
+            strokeWidth: 8,
+            series: [{color: "#1fcc71", data: graphdata[data.id]}]
           });
           graphing[data.id] = true;
           yAxis = new Rickshaw.Graph.Axis.Y({
@@ -67,16 +79,16 @@
         }
         if(graphing[data.id] != true) {
           if(data.id == 99) {
-            graph.series.push({color: "#FF0000", data: graphdata[data.id]});
+            graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
           } else {
-            graph.series.push({color: "#0000FF", data: graphdata[data.id]});
+            graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
           }
           graphing[data.id] = true;
         }
         graph.render();
       });
       var sendRequest = function(data) {
-        appendData(data,"request")
+        // appendData(data,"request")
         socket.emit("request",data);
       }
 

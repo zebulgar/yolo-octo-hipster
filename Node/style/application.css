@@ -1,0 +1,34 @@
+#chart svg {
+	background: black;
+}
+
+#chart .x_tick {
+	display: none;
+}
+
+#chart .y_ticks {
+	display: none;
+}
+
+#chart .y_grid {
+	display: none;
+}
+
+body {
+	margin: 0px !important;
+}
+
+#bpm {
+	position: absolute;
+	color: white;
+	z-index: 100;
+	left: 50%;
+	margin-left: -73px;
+}
+
+#inner-bpm {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 150px;
+	font-weight: 100;
+}
