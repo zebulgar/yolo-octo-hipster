@@ -90,6 +90,22 @@ Dequeue.prototype.find_peaks = function() {
       low_peaks.push(i);
     }
   }
+  /** TODO: Return Low Peaks/High Peaks **/
+}
+
+/** Simple Low-Pass Filter **/
+Dequeue.prototype.low_pass = function() {
+  var out = []
+  var smoothing = 10;
+  var smoothed = this._front;
+  for (var i = 1; i < data.length(); i++) {
+    out.push(smoothed.data)
+    var next = smoothed._next;
+    var elapsedTime = next.date - smoothed.date;
+    var smoothedValue = smoothed._data + elapsedTime * (next._data - smoothed._data) / smoothing;
+    smoothed = next;
+  }
+  return out;
 }
 
 module.exports = Dequeue;
