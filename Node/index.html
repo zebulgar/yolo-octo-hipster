@@ -11,6 +11,7 @@
     <div id="demo"></div>
     <script>
       var graphdata = [];
+      var len = 6;
       var graph = undefined;
       var socket = io.connect('http://localhost');
       var demo = document.getElementById("demo");
@@ -26,6 +27,9 @@
       socket.on('accelData', function (data) {
         console.log(data);
         appendData(data,"accel data")
+        while (graphdata.length == len) {
+          graphdata.shift()
+        }
         graphdata.push({x:(new Date()).valueOf(),y:data.numEvents});
         if(!graph) {
           graph = new Rickshaw.Graph({
