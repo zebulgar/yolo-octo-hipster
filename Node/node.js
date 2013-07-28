@@ -10,7 +10,7 @@ var express = require("express")
 , Decoder = require('lame').Decoder
 , Duplex = require('stream').Duplex;
 
-var kSample = 0, kScratch = 1, kPitch = 2;
+var kSample = 0, kRoll = 1, kPitch = 2;
 var mode = kSample;
 sample = new Duplex();
 sample.data = new Buffer(0);
@@ -46,7 +46,6 @@ sample._write = function(chunk, encoding, done) {
 }
 sample.on('finish', function() {
   this.done = true;
-  console.log("end");
   var l = this.data.length;
   this.duration = l/4.0/48000*1000/2;
   var newdata = new Buffer(l);
@@ -73,7 +72,7 @@ readStream.pipe(reader);
 pico.setup({samplerate:48000, cellsize: 64});
 var pbuff = 0;
 var alpha = 0.99;
-var amplitude = 1.0;
+var amplitude = 0.0;
 function sinetone(freq) {
   var phase = 0;
   var phaseStep = freq / pico.samplerate;
@@ -88,33 +87,36 @@ function sinetone(freq) {
     }
   };
 }
-//setInterval(function(){pbuff+=pbuff/100.0;},50);
 
-i=0;
-//pico.play(sinetone(40));
+pico.play(sinetone(40));
 ws.on('message', function(data, flags) {
   frame = JSON.parse(data);
   if (frame.hands && frame.hands.length > 0) {
     if (mode == kSample) {
       if (frame.pointables && frame.pointables.length >= 5) {
-        //console.log(frame.pointables.length);
+        amplitude = 0.0;
         mag = 0;
         for(var i=0;i<frame.pointables.length;i++) {
           var point = frame.pointables[i]
           mag += point.tipVelocity[2];
         }
-        //console.log(mag);
         if (Math.abs(mag) > 1000 && (new Date() - sample.start) > sample.duration) {
-        console.log(sample.duration/1000);
-          //var height = frame.hands[0].palmPosition[1]/400.0;
-          //pbuff = height*4000.0 / pico.samplerate;
-          //sample.len = Math.pow(2,frame.pointables.length);
-          //sample.pos = 0.6;
-          //sample.pos = i;
           sample.forward = mag < 0;
           sample.flipflop = true;
           sample.read(0);
         }
+      }
+    }
+    else if (mode == kPitch) {
+      console.log("hi");
+      console.log(frame.pointables.length);
+      if (frame.pointables && frame.pointables.length >= 5) {
+        var height = frame.hands[0].palmPosition[1]/400.0;
+        pbuff = height*4000.0 / pico.samplerate;
+        amplitude = 1.0;
+      }
+      else {
+        amplitude = 0.0;
       }
     }
   }
@@ -207,7 +209,6 @@ setInterval(function() {
       }
     }
   }
-  console.log("allBPM: " + allBpm);
   /** Average all of fronts in last 200ms **/
   var total = 0;
   var totalBPM = 0;
@@ -215,7 +216,6 @@ setInterval(function() {
     total += newData[i];
     totalBPM += allBpm[i];
   }
-  console.log("totalBPM: " + totalBPM);
   if(newData.length != 0) {
     var avg = total / newData.length;
     var avgBPM = totalBPM / allBpm.length;
@@ -244,8 +244,11 @@ app.get('/', function (req, res) {
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
-app.get('/ping', function (req, res) {
+app.get('/sample', function (req, res) {
     mode = kSample;
+});
+app.get('/pitch', function (req, res) {
+    mode = kPitch;
 });
 app.get('/ping', function (req, res) {
     io.sockets.emit('response',{status: 'ping'});
@@ -261,7 +264,10 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('response',data)
   });
   socket.on('sample', function (data) {
-    mode = sample;
+    mode = kSample;
+  });
+  socket.on('pitch', function (data) {
+    mode = kPitch;
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
