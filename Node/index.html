@@ -11,7 +11,8 @@
     <div id="demo"></div>
     <script>
       var graphdata = [];
-      var len = 6;
+      var graphing = [];
+      var len = 50;
       var graph = undefined;
       var socket = io.connect('http://localhost');
       var demo = document.getElementById("demo");
@@ -24,13 +25,8 @@
         console.log(data);
         appendData(data,"response")
       });
-      socket.on('accelData', function (data) {
-        console.log(data);
-        appendData(data,"accel data")
-        while (graphdata.length == len) {
-          graphdata.shift()
-        }
-        graphdata.push({x:(new Date()).valueOf(),y:data.numEvents});
+      socket.on('newDevice', function (data) {
+        graphdata[data.id] = [];
         if(!graph) {
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
@@ -38,13 +34,44 @@
             height: 800,
             renderer: "line",
             stroke: true,
-            series: [{color: "#000000", data: graphdata}]
+            series: [{color: "#000000", data: graphdata[data.id]}]
           });
+        }
+        graph.series.push({color: "#0000FF", data: graphdata[data.id]});
+        graphing[data.id] = true;
+      });
+      socket.on('accelData', function (data) {
+        appendData(data,"accel data")
+        if(!graphdata[data.id]) {
+          graphdata[data.id] = [];
+        }
+        while (graphdata[data.id].length == len) {
+          graphdata[data.id].shift()
+        }
+        graphdata[data.id].push({x:(new Date(data.date)).valueOf(),y:data.magnitude});
+        if(!graph) {
+          graph = new Rickshaw.Graph({
+            element: document.querySelector("#chart"),
+            width: 1000,
+            height: 800,
+            renderer: "line",
+            stroke: true,
+            series: [{color: "#0000FF", data: graphdata[data.id]}]
+          });
+          graphing[data.id] = true;
           yAxis = new Rickshaw.Graph.Axis.Y({
             graph: graph,
             tickFormat: Rickshaw.Fixtures.Number.formatKMBT
           });
           x_axis = new Rickshaw.Graph.Axis.Time({graph: graph})
+        }
+        if(graphing[data.id] != true) {
+          if(data.id == 99) {
+            graph.series.push({color: "#FF0000", data: graphdata[data.id]});
+          } else {
+            // graph.series.push({color: "#0000FF", data: graphdata[data.id]});
+          }
+          graphing[data.id] = true;
         }
         graph.render();
       });

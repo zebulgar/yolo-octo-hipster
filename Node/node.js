@@ -8,21 +8,58 @@ var app = express()
 
 server.listen(3000)
 
-var accelData = new dequeue();
-var accelLimit = 5000;
+var allData = []
+
+/** Each concert-goer keeps at most 10s of data **/
+var accelLimit = 10000;
+
 var devices = 1;
+var smoothed = 0;
+var smoothing = 10;
+setInterval(function() {
+  for(var i = 0; i < allData.length; i ++) {
+    var accelData = allData[i];
+    var time = new Date();
+    if(accelData && accelData.peek_back()) {
+      while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
+        accelData.pop_back();
+      }
+    }
+  }
+}, 5000);
+
+/** Simple Low-Pass Filter **/
+low_pass = function(newData) { 
+}
+
 setInterval(function() {
   var time = new Date();
-  while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
-    accelData.pop_back();
-    console.log("INNER DIFF: " + (time - accelData.peek_back().date));
+  var newData = [];
+  /** Submit all individual values **/
+  for(var i = 0; i < allData.length; i ++) {
+    if(allData[i]) {
+      var data = allData[i].peek_front();
+      if(data) {
+        var magnitude = allData[data.id].peek_magnitude();
+        io.sockets.emit('accelData',{id: data.id, date: data.date, magnitude: magnitude});
+        console.log("DELTA: " + (time - data.date));
+        if (time - data.date < 400) {
+          newData.push(magnitude);
+        }
+      }
+    }
   }
-  if(!accelData.empty()) {
-    console.log("OUTER DIFF: " + (accelData.peek_back().date));
+  /** Average all of fronts in last 200ms **/
+  console.log("New Data: " + newData);
+  var total = 0;
+  for(var i = 0; i < newData.length; i ++) {
+    total += newData[i];
   }
-  console.log(accelData.length);
-  console.log("DATA2: " + accelData.peek_back())
-}, 5000);
+  if(newData.length != 0) {
+    var avg = total / newData.length;
+    // io.sockets.emit('accelData',{id: 99, date: (new Date()), magnitude: avg});
+  }
+}, 100);
 
 app.use("/js", express.static(__dirname + '/js'));
 app.use("/style", express.static(__dirname + '/style'));
@@ -35,19 +72,24 @@ app.get('/', function (req, res) {
 });
 app.get('/ping', function (req, res) {
     io.sockets.emit('response',{status: 'ping'});
-    console.log("pinging");
+    // console.log("pinging");
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('response', { id: 1 });
+  socket.emit('response', { id: devices });
+  io.sockets.emit('newDevice', { id: devices });
+  allData[devices] = new dequeue();
+  devices++;
   socket.on('request', function (data) {
     console.log(data);
     io.sockets.emit('response',data)
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
-    console.log("DATA1: " + data.x);
-    accelData.push(data);
-    io.sockets.emit('accelData',{numEvents:accelData.peek_magnitude()});
+    // console.log("Coming from: " + data.id);
+    if(!allData[data.id]) {
+      allData[data.id] = new dequeue();
+    }
+    allData[data.id].push(data);
   });
 });
