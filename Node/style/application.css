@@ -41,3 +41,42 @@ body {
 	margin-top: 20px;
 	font-weight: 700;
 }
+
+.song-title {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 32px;
+	padding-top: 20px;
+	padding-left: 20px
+}
+
+.song-name {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 24px;
+	padding-top: 15px;
+	padding-left: 20px
+}
+
+.song-row {
+	height: 60px;
+}
+.title-row {
+	background: #303030;
+	height: 80px;
+}
+.green-row {
+	background: #1fcc71;
+}
+.yellow-row {
+	background: #ffd800;
+}
+.orange-row {
+	background: #ffa200;
+}
+.maroon-row {
+	background: #ff7200;
+}
+.red-row {
+	background: #ff5400;
+}
