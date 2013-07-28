@@ -39,7 +39,7 @@ public class AccelerometerService extends Service implements SensorEventListener
         Log.v(TAG, "AccelerometerService created");
 
         PowerManager mgr = (PowerManager)this.getSystemService(Context.POWER_SERVICE);
-        wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MyWakeLock");
+        wakeLock = mgr.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Derp");
         wakeLock.acquire();
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -56,7 +56,9 @@ public class AccelerometerService extends Service implements SensorEventListener
 
     @Override
     public void onDestroy() {
+        wakeLock.release();
         Log.v(TAG, "AccelerometerService destroyed");
+        super.onDestroy();
     }
 
     @Override
@@ -66,7 +68,6 @@ public class AccelerometerService extends Service implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        wakeLock.acquire();
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float[] values = event.values;
             // Movement
@@ -83,7 +84,6 @@ public class AccelerometerService extends Service implements SensorEventListener
             tos.sendAccelerometer(values);
 
         }
-        wakeLock.release();
     }
 
     @Override
@@ -143,10 +143,15 @@ public class AccelerometerService extends Service implements SensorEventListener
         public void on(String event, IOAcknowledge ack, Object... args) {
             Log.v(TAG,"ToServer Event occurred: " +event );
             Log.v(TAG, "ToServer Event data: " + args[0] );
-            ServerID id = gson.fromJson(args[0].toString(), ServerID.class);
-            if(id.id != 0) {
-                Log.v(TAG, "ToServer ID: " + id.id );
-                deviceID = id.id;
+            if(event.toString().compareTo("newDevice") == 0) {
+                ServerID id = gson.fromJson(args[0].toString(), ServerID.class);
+                if(id.id != 0) {
+                    Log.v(TAG, "ToServer ID: " + id.id );
+                    if(deviceID == 0) {
+                        Log.v(TAG, "ToServer ID: Mine becomes:" + id.id );
+                        deviceID = id.id;
+                    }
+                }
             }
         }
     }

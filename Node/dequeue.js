@@ -27,6 +27,41 @@ Dequeue.prototype.push = function(data) {
     this.length += 1;
   }
 };
+
+magnitude = function(data) {
+  var magnitude = Math.pow(Math.pow(data.x,2) + Math.pow(data.y,2) + Math.pow(data.z,2), 0.5);
+  return magnitude;
+}
+
+Dequeue.prototype.low_pass_push = function(data) {
+  if (data) {
+    var prev = this._front._prev._data;
+
+    if(prev) {
+      var smoothed = magnitude(prev);
+      console.log("Previous: " + smoothed);
+      var smoothing = 800;
+      var lastUpdate = prev.date;
+      var now = data.date;
+      var elapsedTime = now - lastUpdate;
+      var newValue = magnitude(data)
+      console.log("Elapsed: " + elapsedTime);
+      console.log("Delta: " + (newValue - smoothed));
+      var smoothValue = smoothed + elapsedTime * (newValue - smoothed) / smoothing;
+      var ratio = smoothValue / newValue;
+      data.x = data.x * ratio;
+      data.y = data.y * ratio;
+      data.z = data.z * ratio;
+    }
+
+    var node = new Dequeue.Node(data);
+    node._prev = this._front._prev;
+    node._next = this._front;
+    this._front._prev._next = node;
+    this._front._prev = node;
+    this.length += 1;
+  }
+};
  
 Dequeue.prototype.pop_front = function() {
   if (this.empty()) {
@@ -83,36 +118,6 @@ Dequeue.prototype.to_array = function() {
       out.push(node._data);
     }
     node = node._prev;
-  }
-  return out;
-}
-
-/** Simple Peak-Finding Algorithm **/
-Dequeue.prototype.find_peaks = function() {
-  var data = this.to_array();
-  var high_peaks = []
-  var low_peaks = []
-  for (var i = 1; i < data.length() - 1; i++) {
-    if(data[i-1] < data[i] && data[i] > data[i+1]) {
-      high_peaks.push(i);
-    } else if(data[i-1] > data[i] && data[i] < data[i+1]) {
-      low_peaks.push(i);
-    }
-  }
-  /** TODO: Return Low Peaks/High Peaks **/
-}
-
-/** Simple Low-Pass Filter **/
-Dequeue.prototype.low_pass = function() {
-  var out = []
-  var smoothing = 10;
-  var smoothed = this._front;
-  for (var i = 1; i < data.length(); i++) {
-    out.push(smoothed.data)
-    var next = smoothed._next;
-    var elapsedTime = next.date - smoothed.date;
-    var smoothedValue = smoothed._data + elapsedTime * (next._data - smoothed._data) / smoothing;
-    smoothed = next;
   }
   return out;
 }

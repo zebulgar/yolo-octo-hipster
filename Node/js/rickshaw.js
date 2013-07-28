@@ -2258,11 +2258,13 @@ Rickshaw.Graph.Renderer = Rickshaw.Class.create( {
 
 		var fill = this.fill ? series.color : 'none';
 		var stroke = this.stroke ? series.color : 'none';
+		var opacity = this.opacity ? series.opacity : this.opacity;
 
 		series.path.setAttribute('fill', fill);
 		series.path.setAttribute('stroke', stroke);
-		series.path.setAttribute('stroke-width', this.strokeWidth);
+		series.path.setAttribute('stroke-width', 8);
 		series.path.setAttribute('class', series.className);
+		series.path.setAttribute('opacity', 0.5);
 	},
 
 	configure: function(args) {
@@ -2379,7 +2381,8 @@ Rickshaw.Graph.Renderer.Bar = Rickshaw.Class.create( Rickshaw.Graph.Renderer, {
 
 		var defaults = Rickshaw.extend( $super(), {
 			gapSize: 0.05,
-			unstack: false
+			unstack: false,
+			opacity: 1.0
 		} );
 
 		delete defaults.tension;

@@ -1,0 +1,86 @@
+#actual-bpm {
+	font-size: 32px;
+	font-weight: 100;
+	line-height: 0px;
+}
+
+#chart svg {
+	background: black;
+}
+
+#chart .x_tick {
+	display: none;
+}
+
+#chart .y_ticks {
+	display: none;
+}
+
+#chart .y_grid {
+	display: none;
+}
+
+body {
+	margin: 0px !important;
+}
+
+#bpm {
+	position: absolute;
+	color: white;
+	z-index: 100;
+	left: 50%;
+	margin-left: -73px;
+}
+
+#inner-bpm {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 150px;
+	font-weight: 100;
+	text-align: center;
+	margin-top: 20px;
+	font-weight: 700;
+}
+
+.song-title {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 32px;
+	padding-top: 20px;
+	padding-left: 20px
+}
+
+.song-name {
+	color: white;
+	font-family: Avenir Next;
+	font-size: 24px;
+	padding-top: 15px;
+	padding-left: 20px
+}
+
+#songs {
+	width: 50%;
+}
+
+.song-row {
+	height: 60px;
+}
+.title-row {
+	background: #303030;
+	height: 80px;
+}
+.green-row {
+	background: #1fcc71;
+}
+.yellow-row {
+	background: #ffd800;
+}
+.orange-row {
+	background: #ffa200;
+}
+.maroon-row {
+	background: #ff7200;
+}
+.red-row {
+	background: #ff5400;
+}

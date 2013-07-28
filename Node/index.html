@@ -1,17 +1,274 @@
 <html>
   <head>
+    <title>yolo-octo-hipster</title>
+    <script src="js/leap.js"></script>
+    <script>
+    
+      function moveFinger(Finger, posX, posY, posZ, dirX, dirY, dirZ) {
+        Finger.style.webkitTransform = "translateX("+posX+"px) translateY("+posY+"px) translateZ("+posZ+"px) rotateX("+dirX+"deg) rotateY(0deg) rotateZ("+dirZ+"deg)";
+      }
+
+      function moveSphere(Sphere, posX, posY, posZ, rotX, rotY, rotZ) {
+        Sphere.style.webkitTransform = "translateX("+posX+"px) translateY("+posY+"px) translateZ("+posZ+"px) rotateX("+rotX+"deg) rotateY(0deg) rotateZ(0deg)";
+      }
+
+      var fingers = {};
+      var spheres = {};
+      var controller = new Leap.Controller({enableGestures: true});
+      controller.loop(function(frame) {
+        var fingerIds = {};
+        var handIds = {};
+        if (frame.hands === undefined ) { 
+          var handsLength = 0 
+        } else {
+          var handsLength = frame.hands.length;
+        }
+        for (var handId = 0, handCount = handsLength; handId != handCount; handId++) {
+          var hand = frame.hands[handId];
+          var posX = (hand.palmPosition[0]*3);
+          var posY = (hand.palmPosition[2]*3)-200;
+          var posZ = (hand.palmPosition[1]*3)-400;
+          var rotX = 0;
+          var rotY = 0;
+          var rotZ = 0;
+          var sphere = spheres[hand.id];
+          if (!sphere) {
+            var sphereDiv = document.getElementById("sphere").cloneNode(true);
+                sphereDiv.setAttribute('id',hand.id);
+                sphereDiv.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16);
+                document.getElementById('scene').appendChild(sphereDiv);
+                spheres[hand.id] = hand.id;
+          } else {
+            var sphereDiv =  document.getElementById(hand.id);
+            if (typeof(sphereDiv) != 'undefined' && sphereDiv != null) {
+              moveSphere(sphereDiv, posX, posY, posZ, rotX, rotY, rotZ);
+            }
+          }
+          handIds[hand.id] = true;
+        }
+        for (handId in spheres) {
+          if (!handIds[handId]) {
+            var sphereDiv =  document.getElementById(spheres[handId]);
+            sphereDiv.parentNode.removeChild(sphereDiv);
+            delete spheres[handId];
+          }
+        }
+
+        for (var pointableId = 0, pointableCount = frame.pointables.length; pointableId != pointableCount; pointableId++) {
+          var pointable = frame.pointables[pointableId];
+          var posX = (pointable.tipPosition[0]*3);
+          var posY = (pointable.tipPosition[2]*3)-200;
+          var posZ = (pointable.tipPosition[1]*3)-400;
+          var dirX = -(pointable.direction[1]*90);
+          var dirY = -(pointable.direction[2]*90);
+          var dirZ = (pointable.direction[0]*90);
+          var finger = fingers[pointable.id];
+          if (!finger) {
+            var fingerDiv = document.getElementById("finger").cloneNode(true);
+                fingerDiv.setAttribute('id',pointable.id);
+                fingerDiv.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16);
+                document.getElementById('scene').appendChild(fingerDiv);
+                fingers[pointable.id] = pointable.id;
+          } else {
+            var fingerDiv =  document.getElementById(pointable.id);
+            if (typeof(fingerDiv) != 'undefined' && fingerDiv != null) {
+              moveFinger(fingerDiv, posX, posY, posZ, dirX, dirY, dirZ);
+            }
+          }
+          fingerIds[pointable.id] = true;
+        }
+        for (fingerId in fingers) {
+          if (!fingerIds[fingerId]) {
+            var fingerDiv =  document.getElementById(fingers[fingerId]);
+            fingerDiv.parentNode.removeChild(fingerDiv);
+            delete fingers[fingerId];
+          }
+        }
+        document.getElementById('showHands').addEventListener('mousedown', function() {
+          document.getElementById('app').setAttribute('class','show-hands');
+        }, false);
+        document.getElementById('hideHands').addEventListener('mousedown', function() {
+          document.getElementById('app').setAttribute('class','');
+        }, false);
+      });
+
+    </script>
+    <style>
+      *,*:before,*:after { 
+        margin: 0; 
+        padding: 0; 
+        border: 0;
+        -webkit-box-sizing: border-box;
+      }
+      button {
+        padding: .5em;
+      }
+      #app { 
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-size: 200%;
+        overflow: hidden;
+        background-color: #101010;
+        -webkit-perspective: 1000; 
+      }
+      #scene-holder {
+        margin-left: 641px;
+        position: relative;
+      }
+      #scene,
+      #scene:before {
+        position: absolute;
+        left: 50%;
+        top: 277px;
+        width: 40em;
+        height: 68px;
+        margin: -20em 0 0 -20em;
+        background-size: 5em 5em, 5em 5em, 1em 1em, 1em 1em;
+        background-position: -.1em -.1em, -.1em -.1em, -.05em -.05em, -.05em -.05em;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: rotateX(75deg);
+      }
+      #scene {
+        -webkit-transform: rotateX(75deg);
+      }
+      #scene:before {
+        content: '';
+        -webkit-transform: rotateX(90deg) translateZ(19.5em) translateY(20em);
+      }
+      .cube {
+        background-color: red;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: translateX(19.5em) translateY(19.5em) translateZ(0em);
+      }
+      .finger,
+      .sphere {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1em;
+        height: 1em;
+        margin: -.5em 0 0 -.5em;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: translateX(14.5em) translateY(14.5em) translateZ(0);
+      }
+
+      .finger {
+        opacity: .8;
+        height: 3em;
+      }
+
+      .sphere {
+        opacity: .3;
+        display: none;
+        font-size: 100px;
+      }
+
+      .show-hands .sphere {
+        display: block;
+      }
+
+      .face {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-color: inherit;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform-origin: 0 0;
+        -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.9);
+      }
+      .cube .face.tp { -webkit-transform: translateZ(1em); }
+      .cube .face.ft { -webkit-transform: rotateX(90deg) translateZ(-1em); }
+      .cube .face.bk { -webkit-transform: rotateX(90deg); }
+      .cube .face.lt { -webkit-transform: rotateY(90deg) translateX(-1em); }
+      .cube .face.rt { -webkit-transform: rotateY(90deg) translateX(-1em) translateZ(1em); }
+
+      .finger .face.tp { -webkit-transform: translateZ(1em); height: 3em; }
+      .finger .face.ft { -webkit-transform: rotateX(90deg) translateZ(-3em); }
+      .finger .face.bk { -webkit-transform: rotateX(90deg); }
+      .finger .face.lt { -webkit-transform: rotateY(90deg) translateX(-1em); height: 3em;}
+      .finger .face.rt { -webkit-transform: rotateY(90deg) translateX(-1em) translateZ(1em); height: 3em;}
+
+    </style>
     <link href="/style/rickshaw.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/style/application.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/rickshaw.js"></script>
     <script src="/js/d3.min.js"></script>
     <link>
   </head>
   <body>
-    <div id="chart"></div>
-    <div id="demo"></div>
+    <div id="bpm">
+      <h2 id="inner-bpm">
+      </h2>
+    </div>
+    <div id="chart-holder"><div id="chart"></div></div>
+    <div id="songs">
+      <div class="song-row title-row">
+        <div class="song-title">
+          QUEUE
+        </div>
+      </div>
+      <div class="song-row green-row">
+        <div class="song-name">
+          American Girl by Bonnie McKee
+        </div>
+      </div>
+      <div class="song-row yellow-row">
+        <div class="song-name">
+          Pursuit of Happiness by Kid Cudi
+        </div>
+      </div>
+      <div class="song-row orange-row">
+        <div class="song-name">
+          TiK ToK by Ke$ha
+        </div>
+      </div>
+      <div class="song-row green-row">
+        <div class="song-name">
+          American Girl by Bonnie McKee
+        </div>
+      </div>
+      <div class="song-row maroon-row">
+        <div class="song-name">
+          Poker Face by Lady Gaga
+        </div>
+      </div>
+      <div class="song-row red-row">
+        <div class="song-name">
+          Skinny Love by Bon Iver
+        </div>
+      </div>
+    </div>
+    <div id="scene-holder">
+      <div id="scene">
+        <div id="cube" class="cube">
+          <div class="face tp"></div>
+          <div class="face lt"></div>
+          <div class="face rt"></div>
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+        </div>
+        <div id="finger" class="cube finger">
+          <div class="face tp"></div>
+          <div class="face lt"></div>
+          <div class="face rt"></div>
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+        </div>
+        <div id="sphere" class="cube sphere">
+          <div class="face tp"></div>
+          <div class="face lt"></div>
+          <div class="face rt"></div>
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+        </div>
+      </div>
+    </div>
     <script>
       var graphdata = [];
-      var len = 6;
+      var graphing = [];
+      var len = 50;
       var graph = undefined;
       var socket = io.connect('http://localhost');
       var demo = document.getElementById("demo");
@@ -22,37 +279,77 @@
       }
       socket.on('response', function (data) {
         console.log(data);
-        appendData(data,"response")
+        // appendData(data,"response")
       });
+      socket.on('bpm', function (data) {
+        data.bpm = Math.round(data.bpm);
+        document.getElementById("inner-bpm").innerHTML = data.bpm + " <div id='actual-bpm'>BPM</div>";
+        var large = document.getElementById("bpm").offsetWidth;
+        document.getElementById("bpm").style.marginLeft = -large/2;
+      });
+      // socket.on('newDevice', function (data) {
+      //   graphdata[data.id] = [];
+      //   if(!graph) {
+      //     graph = new Rickshaw.Graph({
+      //       element: document.querySelector("#chart"),
+      //       width: window.innerWidth,
+      //       height: 800,
+      //       renderer: "line",
+      //       min: 0,
+      //       max: 4,
+      //       stroke: true,
+      //       strokeWidth: 8,
+      //       series: [{color: "#000000", data: graphdata[data.id]}]
+      //     });
+      //   }
+      //   graph.series.push({color: "#0000FF", data: graphdata[data.id]});
+      //   graphing[data.id] = true;
+      // });
       socket.on('accelData', function (data) {
-        console.log(data);
-        appendData(data,"accel data")
-        while (graphdata.length == len) {
-          graphdata.shift()
+        if(!graphdata[data.id]) {
+          graphdata[data.id] = [];
         }
-        graphdata.push({x:(new Date()).valueOf(),y:data.numEvents});
+        while (graphdata[data.id].length == len) {
+          graphdata[data.id].shift()
+        }
+        var date = (new Date(data.date)).valueOf();
+        if(date) {
+          graphdata[data.id].push({x:date,y:data.magnitude});
+        }
         if(!graph) {
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
-            width: 1000,
-            height: 800,
+            width: window.innerWidth,
+            height: 300,
             renderer: "line",
+            min: 0,
+            max: 4,
             stroke: true,
-            series: [{color: "#000000", data: graphdata}]
+            strokeWidth: 8,
+            series: [{color: "#1fcc71", data: graphdata[data.id]}]
           });
+          graphing[data.id] = true;
           yAxis = new Rickshaw.Graph.Axis.Y({
             graph: graph,
             tickFormat: Rickshaw.Fixtures.Number.formatKMBT
           });
           x_axis = new Rickshaw.Graph.Axis.Time({graph: graph})
         }
+        if(graphing[data.id] != true) {
+          if(data.id == 0) {
+            graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
+          } else {
+            graph.series.push({color: "#1fcc71", data: graphdata[data.id]});
+          }
+          graphing[data.id] = true;
+          graphdata[data.id] = [];
+        }
         graph.render();
       });
       var sendRequest = function(data) {
-        appendData(data,"request")
+        // appendData(data,"request")
         socket.emit("request",data);
       }
-
       // To use: "sendRequest({data:"data"})
     </script>
   </body>

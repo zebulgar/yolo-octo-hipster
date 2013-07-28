@@ -39,6 +39,12 @@
 		4ADCCD4D157915F00022990C /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCCBC715790DEC0022990C /* SocketIO.m */; };
 		B99403E017A478BF002A08F1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99403DF17A478BF002A08F1 /* CoreMotion.framework */; };
 		B9BDEF7917A4960A0004EEF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */; };
+		B9BDEF7F17A4E3BA0004EEF7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BDEF7E17A4E3BA0004EEF7 /* Default-568h@2x.png */; };
+		B9BDEF8217A4FB7E0004EEF7 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDEF8117A4FB7E0004EEF7 /* GraphView.m */; };
+		B9BDEF8417A5014B0004EEF7 /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BDEF8317A5014B0004EEF7 /* gradient.png */; };
+		B9BDEF8717A50D140004EEF7 /* UICircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDEF8617A50D140004EEF7 /* UICircularSlider.m */; };
+		B9BDEF8917A51F510004EEF7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BDEF8817A51F510004EEF7 /* Icon.png */; };
+		B9BDEF8B17A51F870004EEF7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BDEF8A17A51F870004EEF7 /* Icon.png */; };
 		C9E391A215E2A1B00004693A /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E391A115E2A1B00004693A /* SocketIOJSONSerialization.m */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +86,7 @@
 		4AD96DF9168225FC00D9E42D /* SocketIOTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = SOURCE_ROOT; };
 		4AD96DFA16822DE300D9E42D /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = SOURCE_ROOT; };
 		4AD96DFB16822DE300D9E42D /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = SOURCE_ROOT; };
-		4ADCCB9D15790D760022990C /* SocketTesterARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketTesterARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ADCCB9D15790D760022990C /* Yolo DJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yolo DJ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADCCBA115790D760022990C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4ADCCBA315790D760022990C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4ADCCBA515790D760022990C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,6 +106,14 @@
 		4ADCCBF215790FDF0022990C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B99403DF17A478BF002A08F1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B9BDEF7E17A4E3BA0004EEF7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B9BDEF8017A4FB730004EEF7 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		B9BDEF8117A4FB7E0004EEF7 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		B9BDEF8317A5014B0004EEF7 /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
+		B9BDEF8517A50D020004EEF7 /* UICircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircularSlider.h; sourceTree = "<group>"; };
+		B9BDEF8617A50D140004EEF7 /* UICircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICircularSlider.m; sourceTree = "<group>"; };
+		B9BDEF8817A51F510004EEF7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B9BDEF8A17A51F870004EEF7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C9E391A015E2A1B00004693A /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = SOURCE_ROOT; };
 		C9E391A115E2A1B00004693A /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -171,6 +185,7 @@
 		4ADCCB9215790D760022990C = {
 			isa = PBXGroup;
 			children = (
+				B9BDEF8A17A51F870004EEF7 /* Icon.png */,
 				B9BDEF7817A4960A0004EEF7 /* CoreLocation.framework */,
 				B99403DF17A478BF002A08F1 /* CoreMotion.framework */,
 				4ADCCBA715790D760022990C /* SocketTesterARC */,
@@ -182,7 +197,7 @@
 		4ADCCB9E15790D760022990C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCCB9D15790D760022990C /* SocketTesterARC.app */,
+				4ADCCB9D15790D760022990C /* Yolo DJ.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +227,8 @@
 				4ADCCBB315790D760022990C /* ViewController.h */,
 				4ADCCBB415790D760022990C /* ViewController.m */,
 				4ADCCBB615790D760022990C /* ViewController.xib */,
+				B9BDEF8517A50D020004EEF7 /* UICircularSlider.h */,
+				B9BDEF8617A50D140004EEF7 /* UICircularSlider.m */,
 				4ADCCBC615790DEC0022990C /* SocketIO.h */,
 				4ADCCBC715790DEC0022990C /* SocketIO.m */,
 				4AD96DF21680853E00D9E42D /* SocketIOPacket.h */,
@@ -223,6 +240,11 @@
 				4AD96DF716808B7900D9E42D /* SocketIOTransportWebsocket.m */,
 				4AD96DFA16822DE300D9E42D /* SocketIOTransportXHR.h */,
 				4AD96DFB16822DE300D9E42D /* SocketIOTransportXHR.m */,
+				B9BDEF8017A4FB730004EEF7 /* GraphView.h */,
+				B9BDEF8117A4FB7E0004EEF7 /* GraphView.m */,
+				B9BDEF8317A5014B0004EEF7 /* gradient.png */,
+				B9BDEF7E17A4E3BA0004EEF7 /* Default-568h@2x.png */,
+				B9BDEF8817A51F510004EEF7 /* Icon.png */,
 				4ADCCBA815790D760022990C /* Supporting Files */,
 			);
 			path = SocketTesterARC;
@@ -256,7 +278,7 @@
 			);
 			name = SocketTesterARC;
 			productName = SocketTesterARC;
-			productReference = 4ADCCB9D15790D760022990C /* SocketTesterARC.app */;
+			productReference = 4ADCCB9D15790D760022990C /* Yolo DJ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -292,6 +314,10 @@
 			files = (
 				4ADCCBAC15790D760022990C /* InfoPlist.strings in Resources */,
 				4ADCCBB815790D760022990C /* ViewController.xib in Resources */,
+				B9BDEF7F17A4E3BA0004EEF7 /* Default-568h@2x.png in Resources */,
+				B9BDEF8417A5014B0004EEF7 /* gradient.png in Resources */,
+				B9BDEF8917A51F510004EEF7 /* Icon.png in Resources */,
+				B9BDEF8B17A51F870004EEF7 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +349,8 @@
 				4A92E91D179548B40077B69C /* SBJsonStreamWriterAccumulator.m in Sources */,
 				4A92E91E179548B40077B69C /* SBJsonStreamWriterState.m in Sources */,
 				4A92E91F179548B40077B69C /* SBJsonWriter.m in Sources */,
+				B9BDEF8217A4FB7E0004EEF7 /* GraphView.m in Sources */,
+				B9BDEF8717A50D140004EEF7 /* UICircularSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,12 +437,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocketTesterARC/SocketTesterARC-Prefix.pch";
 				INFOPLIST_FILE = "SocketTesterARC/SocketTesterARC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Yolo DJ";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,12 +454,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocketTesterARC/SocketTesterARC-Prefix.pch";
 				INFOPLIST_FILE = "SocketTesterARC/SocketTesterARC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Yolo DJ";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

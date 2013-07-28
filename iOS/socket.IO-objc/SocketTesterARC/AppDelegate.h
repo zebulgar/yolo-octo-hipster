@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class ViewController;
+
+NSString *idnumber;
+NSString *bpm;
+NSTimer *timer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
