@@ -35,7 +35,7 @@
           graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
             width: 1000,
-            height: 1000,
+            height: 800,
             renderer: "line",
             stroke: true,
             series: [{color: "#000000", data: graphdata}]
@@ -52,8 +52,6 @@
         appendData(data,"request")
         socket.emit("request",data);
       }
-      setInterval(function(){for(var i=0;i<Math.random()*7;i+=1){socket.emit("accelerometer",{x:Math.random(),y:Math.random(),z:Math.random()})}},100)
-      setInterval(function(){socket.emit("accelData")},1000)
 
       // To use: "sendRequest({data:"data"})
     </script>

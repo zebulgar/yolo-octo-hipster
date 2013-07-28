@@ -66,6 +66,15 @@ Dequeue.prototype.peek_back = function() {
   return this._back._next._data;
 };
 
+Dequeue.prototype.peek_magnitude = function() {
+  if (this.empty()) {
+    return null;
+  }
+  var data = this._front._prev._data;
+  var magnitude = Math.pow(Math.pow(data.x,2) + Math.pow(data.y,2) + Math.pow(data.z,2), 0.5);
+  return magnitude;
+};
+
 Dequeue.prototype.to_array = function() {
   var out = []
   node = this._front;

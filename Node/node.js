@@ -9,13 +9,19 @@ var app = express()
 server.listen(3000)
 
 var accelData = new dequeue();
-var accelLimit = 1000;
+var accelLimit = 5000;
 setInterval(function() {
   var time = new Date();
   while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
     accelData.pop_back();
+    console.log("INNER DIFF: " + (time - accelData.peek_back().date));
   }
-}, 1000);
+  if(!accelData.empty()) {
+    console.log("OUTER DIF: " + (accelData.peek_back().date));
+  }
+  console.log(accelData.length);
+  console.log("DATA2: " + accelData.peek_back())
+}, 5000);
 
 app.use("/js", express.static(__dirname + '/js'));
 app.use("/style", express.static(__dirname + '/style'));
@@ -39,9 +45,8 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
+    console.log("DATA1: " + data);
     accelData.push(data);
-  });
-  socket.on('accelData', function (data) {
-    socket.emit('accelData',{numEvents:accelData.length});
+    io.sockets.emit('accelData',{numEvents:accelData.peek_magnitude()});
   });
 });
