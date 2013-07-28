@@ -10,6 +10,7 @@ server.listen(3000)
 
 var accelData = new dequeue();
 var accelLimit = 5000;
+var devices = 1;
 setInterval(function() {
   var time = new Date();
   while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
@@ -17,7 +18,7 @@ setInterval(function() {
     console.log("INNER DIFF: " + (time - accelData.peek_back().date));
   }
   if(!accelData.empty()) {
-    console.log("OUTER DIF: " + (accelData.peek_back().date));
+    console.log("OUTER DIFF: " + (accelData.peek_back().date));
   }
   console.log(accelData.length);
   console.log("DATA2: " + accelData.peek_back())
@@ -38,14 +39,14 @@ app.get('/ping', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('response', { hello: 'world' });
+  socket.emit('response', { id: 1 });
   socket.on('request', function (data) {
     console.log(data);
     io.sockets.emit('response',data)
   });
   socket.on('accelerometer', function (data) {
     data.date = new Date();
-    console.log("DATA1: " + data);
+    console.log("DATA1: " + data.x);
     accelData.push(data);
     io.sockets.emit('accelData',{numEvents:accelData.peek_magnitude()});
   });
