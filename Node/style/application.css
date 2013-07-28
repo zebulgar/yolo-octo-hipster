@@ -5,7 +5,7 @@
 }
 
 body {
-	background-color: #303030;
+	background-color: rgba(48, 48, 48, 0.6);
 }
 
 .bpm-sticker {
@@ -66,7 +66,13 @@ body {
 	font-family: Avenir Next;
 	font-size: 32px;
 	padding-top: 20px;
-	padding-left: 20px
+	padding-left: 20px;
+	display: inline-block;
+}
+
+.title-row .bpm-sticker {
+	margin-top: 19px;
+	color: #303030;
 }
 
 .song-name {
