@@ -1,18 +1,6 @@
 var express = require("express")
 , http = require("http")
 , dequeue = require("./dequeue.js")
-, webSocket = require('ws')
-, ws = new webSocket('ws://127.0.0.1:6437')
-, audio = require("./build/Release/audio");
-
-ws.on('message', function(data, flags) {
-  frame = JSON.parse(data);
-  if (frame.hands && frame.hands.length > 0) {
-    var height = frame.hands[0].palmPosition[1]/300.0;
-    console.log(height*10);
-    audio.setVol(Math.min(1.0,height));
-  }
-});
 
 var app = express()
     , server = http.createServer(app)
@@ -73,9 +61,14 @@ setInterval(function() {
   }
 }, 100);
 setInterval(function() {
-  var time = new Date();
-  while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
-    accelData.pop_back();
+  for(var i = 0; i < allData.length; i ++) {
+    var accelData = allData[i];
+    var time = new Date();
+    if(accelData) {
+      while (!accelData.empty() && (time - accelData.peek_back().date) > accelLimit) {
+        accelData.pop_back();
+      }
+    }
   }
 }, 5000);
 
